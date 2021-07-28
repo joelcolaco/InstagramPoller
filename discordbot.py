@@ -1,17 +1,8 @@
 import os
 import discord
-from discord.ext import tasks
-from test2 import b
 
 client = discord.Client()
 
-@tasks.loop(seconds = 10) # repeat after every 10 seconds
-async def myLoop():
-    # work
-    print('Running Loop')
-    b()
-
-myLoop.start()
 
 @client.event
 async def on_ready():
@@ -25,5 +16,6 @@ async def on_message(message):
 
     if message.content.startswith('$hello'):
         await message.channel.send('Hello!')
+
 
 client.run(os.getenv('TOKEN'))

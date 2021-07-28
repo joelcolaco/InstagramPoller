@@ -1,7 +1,6 @@
 import os
 import discord
 from discord.ext import tasks
-from test2 import b
 
 client = discord.Client()
 
@@ -9,7 +8,6 @@ client = discord.Client()
 async def myLoop():
     # work
     print('Running Loop')
-    b()
 
 myLoop.start()
 
