@@ -5,7 +5,7 @@ import os
 INSTAGRAM_USERNAME = os.environ.get('IG_USERNAME')
 
 def get_last_publication_comment_count(html):
-    return int(html.json()["graphql"]["user"]["edge_owner_to_timeline_media"]["edges"][0]["node"]["edge_media_to_comment"]["count"])
+    return str(html.json()["graphql"]["user"]["edge_owner_to_timeline_media"]["edges"][0]["node"]["edge_media_to_comment"]["count"])
 
 def get_last_publication_url(html):
     return html.json()["graphql"]["user"]["edge_owner_to_timeline_media"]["edges"][0]["node"]["shortcode"]
@@ -23,7 +23,7 @@ def webhook(webhook_url, html):
     data["embeds"] = []
     embed = {}
     embed["color"] = 15467852
-    embed["title"] = "New pic of @"+INSTAGRAM_USERNAME+ " Total comments:" + str(get_last_publication_comment_count(html)) +""
+    embed["title"] = "New pic of @"+INSTAGRAM_USERNAME+ " Total comments:" + get_last_publication_comment_count(html) +""
     embed["url"] = "https://www.instagram.com/p/" + \
         get_last_publication_url(html)+"/"
     embed["description"] = get_description_photo(html)
