@@ -50,7 +50,7 @@ def query_instagram():
     try:
         html = get_instagram_html(INSTAGRAM_USERNAME)
         if(os.environ.get("LAST_IMAGE_ID") == get_last_publication_url(html)):
-            print("Not new image to post in discord.")
+            print("No new image to post in discord.")
         else:
             os.environ["LAST_IMAGE_ID"] = get_last_publication_url(html)
             print("New image to post in discord.")
