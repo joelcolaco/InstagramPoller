@@ -4,6 +4,7 @@ from discord.ext import commands
 
 def main():
     bot = commands.Bot(command_prefix='!')
+    bot.user_data = []
     bot.load_extension("monitorcommands")
     bot.load_extension("monitorinstagram")
     bot.run(os.getenv('TOKEN'))
