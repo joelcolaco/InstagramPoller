@@ -1,22 +1,11 @@
 import os
-from discord.ext import commands, tasks
-from instagramconnector import query_instagram
+from discord.ext import commands
 
 
 def main():
     bot = commands.Bot(command_prefix='!')
-
-    @tasks.loop(seconds=float(os.environ.get('TIME_INTERVAL') or 600)
-                )  # repeat based on variable or after every 10 seconds
-    async def myLoop():
-        # work
-        print('Running Loop')
-        query_instagram()
-
-    myLoop.start()
-
     bot.load_extension("monitorcommands")
-
+    bot.load_extension("monitorinstagram")
     bot.run(os.getenv('TOKEN'))
 
 
